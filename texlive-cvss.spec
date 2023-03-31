@@ -1,6 +1,6 @@
 Name:		texlive-cvss
 Version:	64985
-Release:	1
+Release:	2
 Summary:	Compute and display CVSS base scores
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/cvss
