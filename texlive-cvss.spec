@@ -3,7 +3,7 @@ Version:	65169
 Release:	1
 Summary:	Compute and display CVSS base scores
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/cvss
+URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/cvss
 License:	lppl1.3c
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cvss.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cvss.doc.r%{version}.tar.xz
