@@ -1,45 +1,30 @@
-Name:		texlive-cvss
-Version:	65169
-Release:	1
+%global tl_name cvss
+%global tl_revision 76924
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.1.0
+Release:	%{tl_revision}.1
 Summary:	Compute and display CVSS base scores
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/cvss
 License:	lppl1.3c
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cvss.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cvss.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/cvss.source.r%{version}.tar.xz
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/cvss.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/cvss.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/cvss.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-The Common Vulnerability Scoring System (CVSS) is an open
-framework for communicating the characteristics and severity of
-software vulnerabilities. CVSS consists of three metric groups:
-Base, Temporal, and Environmental. This package allows the user
-to compute CVSS3.1 base scores and use them in documents, i.e.
-it only deals with the Base score. Temporal and Environental
-scores will be part of a future release. More information can
-be found at https://www.first.org/cvss/specification-document.
+The Common Vulnerability Scoring System (CVSS) is an open framework for
+communicating the characteristics and severity of software
+vulnerabilities. CVSS consists of three metric groups: Base, Temporal,
+and Environmental. This package allows the user to compute CVSS3.1 base
+scores and use them in documents, i.e. it only deals with the Base
+score. Temporal and Environmental scores will be part of a future
+release. More information can be found at
+https://www.first.org/cvss/specification-document.
 
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-rm -rf tlpkg
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -a * %{buildroot}%{_texmfdistdir}
-
-%files
-%doc %{_texmfdistdir}/source/latex/cvss
-%{_texmfdistdir}/tex/latex/cvss
-%doc %{_texmfdistdir}/doc/latex/cvss
-
-%post -p %{_sbindir}/texlive.post
-
-%postun
-[ "$1" -eq 0 ] && %{_sbindir}/texlive.post
